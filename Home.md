@@ -3,7 +3,6 @@
 ![pictest](images/randompic.jpeg)
 
 ## Notes
-1. ### [Linux](linux.md)
-2. ### [Puppet](puppet.md)
+1. ### [Linux](./PowerShell/Powershell.md)
 
 A New line
