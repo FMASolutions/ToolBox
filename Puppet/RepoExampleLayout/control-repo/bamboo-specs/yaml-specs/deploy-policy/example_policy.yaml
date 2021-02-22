@@ -1,0 +1,3 @@
+- clean
+- artifact-download
+- include 'yaml-specs/tasks/example_task.yaml'

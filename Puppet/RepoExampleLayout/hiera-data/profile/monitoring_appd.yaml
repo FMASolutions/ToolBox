@@ -1,0 +1,10 @@
+lookup_options:
+  profile::monitoring::appd::java_agent:
+    merge:
+      strategy: hash
+  profile::monitoring::appd::analystics_agent:
+    merge:
+      strategy: deep
+
+
+profile::monitoring::appd::install_root: C:\appd

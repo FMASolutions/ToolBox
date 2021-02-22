@@ -1,0 +1,4 @@
+classes:
+  - types
+
+puppet_enterprise::profile::console::proxy::server_name: puppet.DOMAINNAME.com

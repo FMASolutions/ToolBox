@@ -1,0 +1,4 @@
+script:
+  interpreter: cmd.exe
+  scripts:
+    - echo Hello

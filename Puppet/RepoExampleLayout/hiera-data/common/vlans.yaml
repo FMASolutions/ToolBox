@@ -1,0 +1,9 @@
+vlans:
+- dc: DC1
+  name: VLAN - NAME
+  id: 100
+  network: 10.121.10.0/24
+- dc: DC2
+  name: VLAN _ NAME
+  id: 900
+  network: 10.169.94.0/24

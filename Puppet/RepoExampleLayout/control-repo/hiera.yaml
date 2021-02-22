@@ -1,0 +1,44 @@
+---
+version: 5
+defaults:
+    datadir: data
+    data_hash: yaml_data
+hierarchy:
+  - name: "Eyaml hierarchy"
+    lookup_key: eyaml_lookup_key #eyaml backend
+    globs:
+      - "nodes/%{trusted.certname}.yaml"
+      - "application/%{trusted.extensions.pp_application}_data/secrets/%{trusted.extensions.pp_environment}.eyaml"
+      - "roles/%{puppet_server}.yaml"
+      #If you're putting secrets here, you're probably doing something wrong
+      - "common/*.yaml"
+    options:
+      pkcs7_private_key: "/etc/puppetlabs/puppet/eyaml/keys/private_key.pkcs7.pem" #exclue from GIT for security
+      pkcs7_public_key:  "/etc/puppetlabs/puppet/eyaml/keys/Example_Public_Key.pkcs7.pem" #ok to store public key in GIT repo
+  #Generic / Node specific config
+  - name: "Nodes"
+    path: "nodes/%{trusted.certname}.yaml"
+  - name: "Datacentre"
+    path: "dc/%{trusted.extension.pp_datacenter}.yaml"
+  - name: "Tier Common"
+    path: "tier/%{trusted.extensions.pp_apptier}.yaml"
+
+  #Application Specific Config
+  - name: "Application Nodes"
+    path: "application/%{trusted.extensions.pp_application}_data/node/%{trusted.certname.yaml}"
+
+  - name: "Application Environment+Role Specific"
+    path: "application/%{trusted.extensions.pp_application}_data/environment/%{trusted.extensions.pp_environment}/%{trusted.extensions.pp_role}.yaml"
+    
+  - name: "Application Environment Common"
+    path: "application/%{trusted.extensions.pp_application}_data/environment/%{trusted.extensions.pp_environment}.yaml"
+
+  - name: "Application Tier Common"
+    path: "application/%{trusted.extensions.pp_application}_data/tier/%{trusted.extensions.pp_apptier}.yaml"
+
+  - name: "Application Role"
+    path: "application/%{trusted.extensions.pp_application}_data/role/%{trusted.extensions.pp_role}.yaml"
+
+  - name: "Application"
+    path: "application/%{trusted.extensions.pp_application}_data/common.yaml"
+  #End Application specific config

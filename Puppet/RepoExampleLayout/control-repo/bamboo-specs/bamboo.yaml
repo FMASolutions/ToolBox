@@ -1,0 +1,14 @@
+---
+version: 2
+deployment:
+  name: Example Name
+  source-plan: EXA
+
+release-naming: ${bamboo.planRepository.branchName}-1.0.0${bamboo.buildNumber}
+
+environments:
+  - Production
+  - Development
+
+Production: !include 'yaml-specs/deployments/production.yaml'
+Development: !include 'yaml-specs/deployments/development.yaml'

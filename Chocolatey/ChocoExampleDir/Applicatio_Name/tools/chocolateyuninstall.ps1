@@ -1,0 +1,1 @@
+#SCRIPT IS CALLED DURING CHOCO UNINSTALL PACKAGE (after the beforemodify script)

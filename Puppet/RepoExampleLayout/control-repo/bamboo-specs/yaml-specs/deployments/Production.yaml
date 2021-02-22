@@ -1,0 +1,25 @@
+triggers:
+  - build-success
+
+requirements:
+  - puppet
+  - puppet-bolt
+  - ruby
+
+notifications:
+  - recipients:
+      - users:
+        - UserName
+      - emails:
+        - Users@domain.com
+    events:
+      - deployment-failed
+  - events: deployment-failed
+    recipients:
+      -groups:
+        - GROUP-NAME
+
+variables:
+  variable_name: variableValue
+
+tasks: !include 'yaml-specs\deploy-policy\example_policy.yaml'

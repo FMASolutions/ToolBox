@@ -1,0 +1,4 @@
+profile::windows::secuirty::localpolicy::logon_as_service:
+  - NT SERVICE\ALL SERVICES
+  - DOMAINNAME\UserName #SCOM
+  - "%{lookup('profile::application_name::elastic::service_username')}"

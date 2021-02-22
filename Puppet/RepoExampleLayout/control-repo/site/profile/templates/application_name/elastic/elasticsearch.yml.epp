@@ -1,0 +1,28 @@
+bootstrap.memory_lock: true
+
+path.data: <%= $data_dir %>
+path.logs: <%= $logs_dir %>
+
+node.name <%= $cluster_name %>-<%= $node_name %>
+node.local: false
+node.data: true
+node.master: true
+node.max_local_storage_nodes: 1
+
+transport.tcp.port: <%= $tcp_port %>
+http.port: <%= $http_port %>
+network.host: ['_local_','_site_']
+
+cluster.name: <%= $cluster_name %>
+discovery.zen.minimum_master_nodes: <%= $min_master_nodes %>
+discovery.zen.ping.unicast.hosts:
+<% $cluster_hosts.flatten.each |$cluster_host| { -%>
+    - <%= $cluster_host['host'] %>:<%= $cluster_host['port'] %>
+<% } - %>
+
+index.number_of_shards: <%= $index_shards %>
+index.number_of_replicas <%= $index_replicas %>
+index.auto_expand_replicas: <%= $index_auto_expand_replicas %>
+index.query.bool.max_clause_count: 5120
+
+indices.recovery.max_bytes_per_sec: 100m

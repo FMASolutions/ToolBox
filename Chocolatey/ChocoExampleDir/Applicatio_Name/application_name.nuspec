@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>application_name</id>
+        <version>VERSION_NUMBER</version>
+        <title>TITLE</title>
+        <author>AUTHOR</author>
+        <owners>OWNERS</owners>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>
+            MULTI LINE DESCRIPTION
+            HERE
+            Accepts the following options:
+                /FileServer:SERVER - URL of the file download server
+                /InstallPath:PATH - PATH for the install direction
+        </description>
+        <dependencies>
+            <!-- EXAMPLE DEPENDENCY ON "application_name-root" package
+                <dependency id="application_name-root" version="1.0.0" />
+            -->
+        </dependecies>
+        <summary>SUMMARY HERE</summary>
+        <copyright>COPYRIGHT HERE</copyright>
+    </metadata>
+    <files>
+        <file src="PATH\TO\FILE\chocolateyinstall.ps1" target="tools\">
+        <file src="PATH\TO\FILE\chocolateyuninstall.ps1" target="tools\">
+        <file src="PATH\TO\FILE\chocolateybeforemodify.ps1" target="tools\">
+    </files>
+</package>

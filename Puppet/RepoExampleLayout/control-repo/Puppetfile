@@ -1,0 +1,16 @@
+#use control-repo branch if exsits, or production as default
+# install_path is set to ./data
+mod 'hiera-data',
+    :git            => 'ssh://git@bitbucket.domain.com:7999/pup/hiera-data.git', #URL to git repositroy
+    :install_path   => '',
+    :branch         => control_branch,
+    :default_branch => 'production'
+
+#Modules from puppet forge, update versions at the time you start
+mod 'puppetlabs-chocolatey'
+    :git            => 'ssh://git@bitbucket.domain.com:7999/pup/puppetlabs-chocolatey.git' #URL to git repository
+    :tag            => 'v5.0.0' #can be tag or branch
+
+mod 'puppetlabs-iis'
+    :git            => 'ssh://git@bitbucket.domain.com:7999/pup/puppetlabs-iis.git' #URL to git repository
+    :tag            => 'v7.0.0' #can be tag or branch

@@ -1,0 +1,14 @@
+profile::iis::web::extensions:
+  - externalcache
+  - arr
+
+profile::application_name::elastic::base_dir: C:\es
+profile::application_name::elastic::service_name: elasticsearch
+profile::application_name::elastic::service_username: "NT SERVICE\\%{lookup('profile::application_name::elastic::service_name')}"
+
+profile::application_name::webserver::tomcat_version: installed
+profile::application_name::webserver::tomcat_install_path: C:\tools\tomcat\8\64
+
+lookup_options:
+  profile::application_name::webserver::service_password:
+    convert_to: "Sensitive"
