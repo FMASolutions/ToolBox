@@ -4,7 +4,9 @@ $ServiceName = 'TermService'
 try{
     foreach($Server in $ServerList) {
         Invoke-Command -AsJob -ComputerName $Server -ScriptBlock {
-            Get-Service $ServiceName
+            #Written this way to show how to use variable declared outside of the "Invoke-Command" cmdlet
+            $result = Get-Service $Using:ServiceName
+            Write-Host $Using:Server": $result"
         }
     }
     Get-Job | Receive-Job -AutoRemoveJob -Wait
