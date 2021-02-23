@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Networking Notes</title>
+        <style>
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <h1 id="networking-notes">Networking Notes</h1>
+<h2 id="netstat">NetStat</h2>
+<p>Netstat command can be run on a server / client to see a list of connections.</p>
+<h3 id="example-1">Example 1</h3>
+<p>The following codeblock can be used to count the <strong>total</strong> number of TCP connections on port 8080 as well as a count of TCP connections on port 8080 which have a status of <strong>&quot;Established&quot;</strong></p>
+<pre><code>netstat -np tcp | find &quot;8081&quot; /c &amp;&amp; netstat -np tcp | find &quot;8081&quot; | find &quot;ESTABLISHED&quot; /c
+</code></pre>
+<h3 id="example-2">Example 2</h3>
+<p>The following code block will list all TCP connections on port 1433</p>
+<pre><code>netstat -np tcp | find &quot;1433&quot;</code></pre>
+
+    </body>
+    </html>
