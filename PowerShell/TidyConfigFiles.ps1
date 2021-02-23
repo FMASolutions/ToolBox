@@ -26,3 +26,21 @@ function RemoveAllBlankLines{
     }
     return $newContent
 }
+
+function CopyAndTidyFile{
+    param($source, $dest)
+
+    $fileContent = Get-Content $source -Encoding UTF8
+    if($source -like "*.xml"){
+        $tidyFile = RemoveXMLComments($fileContent)
+    } else {
+        $tidyFile = RemoveHashComments($fileContent)
+    }
+
+    #Might need to split file before calling the RemoveAllBlankLines TEST... EG:
+    #$splitFile = $tidyFile -split [Environment]::NewLine
+    #$output = RemoveAllBlankLines($splitFile)
+    
+    $output = RemoveAllBlankLines($tidyFile -split [Environment]::NewLine)
+    Set-Content -Path $dest -Encoding UTF8 -Value $output
+}
