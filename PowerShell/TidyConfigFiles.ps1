@@ -32,15 +32,13 @@ function CopyAndTidyFile{
 
     $fileContent = Get-Content $source -Encoding UTF8
     if($source -like "*.xml"){
-        $tidyFile = RemoveXMLComments($fileContent)
+        $tidyFile = RemoveXMLComments $fileContent
     } else {
-        $tidyFile = RemoveHashComments($fileContent)
+        $tidyFile = RemoveHashComments $fileContent
     }
-
-    #Might need to split file before calling the RemoveAllBlankLines TEST... EG:
-    #$splitFile = $tidyFile -split [Environment]::NewLine
-    #$output = RemoveAllBlankLines($splitFile)
     
     $output = RemoveAllBlankLines($tidyFile -split [Environment]::NewLine)
     Set-Content -Path $dest -Encoding UTF8 -Value $output
 }
+
+CopyAndTidyFile C:\Test\Input.txt C:\Test\Output.txt
