@@ -1,3 +1,11 @@
+### [Home](../Home.md) | [Powershell Home](../PowerShell/Powershell.md)
+
+# Powershell
+
+
+# Combined Script
+Combined Script to use:
+```powershell
 function RemoveXMLComments {
     param($fileContent)
     $newContent = ""
@@ -42,3 +50,4 @@ function CopyAndTidyFile{
 }
 
 CopyAndTidyFile C:\Test\Input.txt C:\Test\Output.txt
+```
