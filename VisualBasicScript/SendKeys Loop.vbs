@@ -1,4 +1,4 @@
-set wsc - CreateObject("WScript.Shell")
+set wsc = CreateObject("WScript.Shell")
 Do
 	wsc.SendKeys("{NUMLOCK}")
 	wsc.SendKeys("{NUMLOCK}")
