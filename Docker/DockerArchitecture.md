@@ -19,12 +19,13 @@ Namespaces allow us to take an operating systems and carve it into multiple isol
 Just like a virtual server feels like an actual server, an OS container feels like an actual independent OS, even though they all share the same Kernel on the host.
 
 Linux Namespaces:
-1. Process ID (pid) (this allows the container to have it's own isolated process tree and is unaware of any processes running on other container)
-2. Network (net) (this allows the container to have it's own isolated network stack, nics, eth0, ip addresses, routing tables.)
-3. Filesystem/mount (mnt) (this allows the container to have it's own root file system (C:\) on windows (/) on linux)
-4. Inter-proc comms (ipc) (allows processes in a single container access the same shared memory, but not outside the container)
-5. UTS (uts) (this allows each container to have it's own unique host name)
-6. User (user) (allows you to map accounts in the container to different users on the host. typical container root to non priviliged on the host)
+
+    1. Process ID (pid) (this allows the container to have it's own isolated process tree and is unaware of any processes running on other container)
+    2. Network (net) (this allows the container to have it's own isolated network stack, nics, eth0, ip addresses, routing tables.)
+    3. Filesystem/mount (mnt) (this allows the container to have it's own root file system (C:\) on windows (/) on linux)
+    4. Inter-proc comms (ipc) (allows processes in a single container access the same shared memory, but not outside the container)
+    5. UTS (uts) (this allows each container to have it's own unique host name)
+    6. User (user) (allows you to map accounts in the container to different users on the host. typical container root to non priviliged on the host)
 
 A containe will have it's own isolated collection of the namespaces above i.e. it's own process id table with PID1, own network namespace with eth0 interface, i.p address.
 
