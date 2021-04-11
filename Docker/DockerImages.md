@@ -3,12 +3,11 @@
 # **Docker Images**
 
 ## **High level overview**
-An image is a READ ONLY template for creating application containers. Inside of it is all the code and supporting files to run an application.
-Images are build time constructs and containers are their runtime counter parts.
+An image is a READ ONLY template for creating application containers. It contains all the code and supporting files to run an application.
 
-At a high level an image is a bunch of files (app files / libraries / os files) along with a manifest (a json file explaining how it all fits together (sometimes called the config file)).
+At a high level an image is a bunch of files (app files / libraries / os files) along with a **manifest** (a json file explaining how it all fits together (sometimes called the config file)).
 
-Images contain layers which are stacked on top of each other. Typically the layering is hidden and docker makes it feel like a single flat image.
+Images contain layers which are stacked on top of each other. Typically the layering is hidden and docker makes it feel like a single flat image (which it is not).
 
 Images are generally stored in registries (cloud or on prem) which then can be pulled down to a machine using the following command:
 ```powershell
@@ -55,3 +54,13 @@ To inspect the configuration and layers of an image we can use the following com
 ```powershell
 docker image inspect ImageName
 ```
+
+## **Pushing and Pulling Images to/from a registry**
+We compute the content hash for each layer, this is known as the **content hash**.
+
+When pushing an image to a registry the manifest and layers are pushed independantly, when pushing the layers we compress they are compressed before being transferred over the internet (to be more efficient). 
+
+As layer ID's are content hashes and compressing a layer changes it's content, when pushing an image to a registry, a hash is generated to verify its integrity, this will fail as the hashes in the manifest do not reflect the computed hash at the registry end. 
+To get around this, when we build the manifest which will be pushed to the registry we populate the registry with new hash values derived from the compressed layer which will then match when the registry performs the integrity check.
+
+A hash derived from a compressed layer is known as a **distribution hash**.
