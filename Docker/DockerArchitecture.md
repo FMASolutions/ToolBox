@@ -1,14 +1,6 @@
 ### [Home](../Home.md) | [Docker Home](./Docker.md)
 
 # Docker / Container Architecture
-## Docker Engine
-The "Docker Engine" is modular, which we interface by using the docker cli. The Docker Engine is made up of the following modules:
-
-    1. API
-    2. daemon
-    3. containerd
-    4. OCI
-
 ## Docker Container
 A container is an Isolated area of an OS with resource usage limits applied. They allow easier access to the kernel namespaces and control groups through the "Docker Engine".
 
@@ -31,3 +23,24 @@ A containe will have it's own isolated collection of the namespaces above i.e. i
 
 ## Linux Kernel Control Groups (cgroups) / Job Objects (Windows equivelant)
 The idea of control groups / job objects is to group processes and impose hardware limits.
+
+## Docker Engine
+The "Docker Engine" is modular, which we interface by using the docker cli. The Docker Engine is made up of the following modules:
+
+    1. API
+    2. daemon
+    3. containerd
+    4. OCI (Open container initiative)
+
+The docker engine is at the core of what docker does, and makes containers easy to manage. The docker engine exposes an API to be called, then internally it interfaces with the kernel (cgroups / namespaces) and out pop containers.
+
+## Container creation flow
+
+    1. User executes a run a container (e.g docker container run containerName)
+    2. CLI calls the REST API which is implemented in the daemon
+    3. daemon calls containerd via grpc which handles execution and lifecycle operation (start, stop, pause)
+    4. containerd starts a shim process to "runc" (an OCI compliant runtime) which interfaces with the kernel to actually create a container
+
+containerd to shims has a 1:many relationship
+
+Lots of other tools plug into the docker engine, e.g docker swarm, on-prem secure registry, universal control plane for RBAC policies.
