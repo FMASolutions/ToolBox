@@ -54,6 +54,10 @@ we can see a history of the commands used to build each of the layers / meta dat
 
     docker history IMAGE
 
+note: some commands only add metadata to the manifest (such as adding a setting the maintainer), while others will create a layer (such as copying files from the host to image layer)
+
 we can also see the manifest json object by running the following command (where IMAGE is the image id / image name):
 
     docker inspect IMAGE    
+
+note: the layers mentioned in the manifest are only the R/O layers containing data (can be seen in the size column of the docker history command output.)
