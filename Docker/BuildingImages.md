@@ -31,7 +31,7 @@ FROM mcr.microsoft.com/dotnet/aspnet:5.0
 WORKDIR /app
 #Copy our published application from the SDK base image into the new base image (NEW LAYER CREATED)
 COPY --from=build /app/out .
-#Use the ENTRYPOINT instruction to specify a command to be exectured when a container is launched, in this case, use the dotnet cli to run our application.
+#The ENTRYPOINT instruction is used to specify a command to be exectured when a container is launched, in this case, use the dotnet cli to run our application.
 #Application dll location should be relative to the most recent "WORKDIR" command, for this example that's "/app"
 ENTRYPOINT ["dotnet", "ApplicationName.dll"]
 ```
