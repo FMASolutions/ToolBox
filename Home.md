@@ -1,6 +1,6 @@
 # Homepage
 
-## **Notes**
+# **Notes**
 1. ### [Chocolatey](./Chocolatey/chocolatey.md)
 2. ### [C Sharp](./CSharp/CSharp.md)
 3. ### [Docker](./Docker/Docker.md)

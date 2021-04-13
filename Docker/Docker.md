@@ -4,3 +4,4 @@
 ### [Docker Architecture](DockerArchitecture.md)
 ### [Docker Images](DockerImages.md)
 ### [Docker Commands](DockerCommands.md)
+### [Building Images (Dockerfile)](./BuildingImages.md)
