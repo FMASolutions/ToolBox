@@ -61,3 +61,8 @@ we can also see the manifest json object by running the following command (where
     docker inspect IMAGE    
 
 note: the layers mentioned in the manifest are only the R/O layers containing data (can be seen in the size column of the docker history command output.)
+
+### Multi Stage Builds
+As with the initial dockerfile example above, we can use multiple base images within the build process of making a final image, the purpose of doing this is to have a final image which is as small as possible. For example:
+
+If deploying an ASP.NET application we wouldn't want the entire dotnet SDK to be part of our final contianer becuase it would be a waste of resource, so we can use a base image containing the SDK to build our application, we can then start off from a different base image which only contains the much smaller dotnet runtime which will be required to run our application. The final image to be run will not contain the SDK resulting in a much smaller and efficient image to build containers from.
