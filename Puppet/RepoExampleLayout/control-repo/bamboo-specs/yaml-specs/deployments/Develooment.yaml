@@ -1,0 +1,24 @@
+triggers:
+  - build-success:
+      branch: development
+
+requirements:
+  - puppet
+  - puppet-bolt
+  - ruby
+
+notifications:
+  - recipients:
+      - users:
+        - UserName
+      - emails:
+        - Users@domain.com
+    events:
+      - deployment-failed
+  - events: deployment-failed
+    recipients:
+      -groups:
+        - GROUP-NAME
+
+variables:
+  variable_name: variableValue

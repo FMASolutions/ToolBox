@@ -1,0 +1,12 @@
+terraform init -backend-config="access_key=#ACCESS KEY HERE#"
+
+terraform import "module.ss-uks-automation-release-rg.azurerm_resource_group.rg" "/subscriptions/03f492ba-003b-45e6-8518-bf4c6c16ca3c/resourceGroups/ss-uks-automation-release-rg"
+terraform import -var-file="./environments/development.tfvars" "module.ss-uks-automation-release-rg.azurerm_resource_group.rg" "/subscriptions/03f492ba-003b-45e6-8518-bf4c6c16ca3c/resourceGroups/ss-uks-automation-release-rg" 
+
+
+terraform plan -var-file="./environments/development.tfvars"
+
+
+terraform apply -var-file="./environments/development.tfvars"
+
+

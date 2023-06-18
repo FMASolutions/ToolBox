@@ -1,0 +1,25 @@
+profile::iis::web::install_features:
+  - web-default-doc
+  - web-http-errors
+  - web-http-logging
+  - web-http-tracing
+  - web-static-content
+profile::iis::web::remove_features:
+  - web-dir-browsing
+profile::iis::web::log_flags:
+  - Date
+  - Time
+  - ClientIP
+  - UserName
+  - ServerIP
+  - ServerPort
+  - Method
+  - UriStem
+  - UriQuery
+  - HttpStatus
+  - HttpSubStatus
+  - Win32Status
+  - TimeTaken
+  - ServerPort
+  - UserAgent
+  - Referer
