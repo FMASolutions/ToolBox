@@ -19,12 +19,18 @@ variable "address_space" {
   description = "Address space to use for the vnet."
 }
 
-variable "subnet_names" {
-  type        = list(string)
-  description = "List of names for the subnets inside the vnet."
+variable "subnets" {
+  type = map(string)
 }
 
-variable "subnet_prefixes" {
-  type        = list(string)
-  description = "Address prefix to use for the subnet."
+variable "managed_identities" {
+  type = map(object({
+    location = string
+    rg_name  = string
+    role_assignments = map(object({
+      scope = string
+      role  = string
+    }))
+  }))
+  description = "Managed Identities to create"
 }

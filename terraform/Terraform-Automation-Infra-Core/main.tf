@@ -16,8 +16,7 @@ module "ss-uks-automation-release-vnet" {
   vnet_location       = module.ss-uks-automation-release-rg.location
   vnet_name           = var.vnet_name
   address_space       = var.address_space
-  subnet_names        = var.subnet_names
-  subnet_prefixes     = var.subnet_prefixes
+  subnets             = var.subnets
   tags = {
     Environment   = var.environment_name
     CostCenter    = "ABC"
@@ -25,3 +24,14 @@ module "ss-uks-automation-release-vnet" {
     Project       = "Shared Services Automation Release"
   }
 }
+
+#module "ss-uks-automation-release-uamids" {
+#  source = "../Terraform-Modules-Core/Security/ManagedIdentity"
+#  managed_identities = var.managed_identities
+#  identity_tags = {
+#    Environment = var.environment_name
+#    CostCenter = "ABC"
+#    ResourceOwner = "Faisal Ahmed"
+#    Project = "Shared Services Release Automation"
+#  }
+#}
